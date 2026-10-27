@@ -1,0 +1,128 @@
+:root {
+    --sidebar-width: 260px;
+    --brand: #4f46e5;
+    --dark: #1e293b;
+}
+
+body {
+    background: #f4f6fb;
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ---------- Sidebar ---------- */
+.sidebar {
+    position: fixed;
+    top: 0; bottom: 0; left: 0;
+    width: var(--sidebar-width);
+    background: var(--dark);
+    color: #cbd5e1;
+    z-index: 1040;
+    overflow-y: auto;
+    transform: translateX(-100%);
+    transition: transform .25s ease;
+}
+.sidebar.open { transform: none; }
+
+.sidebar-brand {
+    display: flex; align-items: center; gap: .6rem;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.15rem; font-weight: 700; color: #fff;
+}
+.sidebar-brand i { color: #818cf8; font-size: 1.4rem; }
+
+.sidebar .nav-link {
+    display: flex; align-items: center; gap: .75rem;
+    color: #cbd5e1;
+    padding: .65rem .9rem;
+    border-radius: .5rem;
+}
+.sidebar .nav-link:hover { background: rgba(255,255,255,.08); color: #fff; }
+.sidebar .nav-link.active { background: var(--brand); color: #fff; }
+.sidebar .nav-link.disabled { opacity: .5; pointer-events: none; }
+
+.sidebar-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,.45);
+    z-index: 1030;
+    display: none;
+}
+.sidebar-overlay.show { display: block; }
+
+/* ---------- Main area ---------- */
+.main-area { min-height: 100vh; }
+
+.topbar {
+    background: #fff;
+    border-bottom: 1px solid #e5e7eb;
+    position: sticky; top: 0; z-index: 1020;
+}
+
+.avatar {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: var(--brand); color: #fff;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-weight: 600; font-size: .85rem;
+}
+
+@media (min-width: 992px) {
+    .sidebar { transform: none; }
+    .main-area { margin-left: var(--sidebar-width); }
+    .sidebar-overlay { display: none !important; }
+}
+
+/* ---------- Statistic cards ---------- */
+.stat-card {
+    border: 0;
+    border-radius: .85rem;
+    box-shadow: 0 1px 3px rgba(16,24,40,.08);
+}
+.stat-icon {
+    width: 52px; height: 52px;
+    border-radius: .75rem;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem;
+}
+.stat-value { font-size: 1.75rem; font-weight: 700; line-height: 1.1; }
+
+/* ---------- Login / setup pages ---------- */
+.auth-wrapper {
+    min-height: 100vh;
+    display: flex; align-items: center; justify-content: center;
+    padding: 1rem;
+    background: linear-gradient(135deg, #4f46e5 0%, #1e293b 100%);
+}
+.auth-card { width: 100%; max-width: 440px; border-radius: 1rem; }
+.auth-logo {
+    width: 64px; height: 64px; margin: 0 auto;
+    border-radius: 1rem;
+    background: var(--brand); color: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.9rem;
+}
+
+.member-dl dt { color: #64748b; font-weight: 600; }
+.member-dl dd { margin-bottom: .85rem; }
+.table thead th { white-space: nowrap; }
+
+/* Module 3 */
+.badge-due { background-color: #fd7e14; color: #fff; }
+.notes-log { white-space: pre-wrap; font-size: .875rem; color: #475569; margin: 0; }
+tr.open-cycle > td { background: #f8fafc; }
+
+/* Module 4: calendar */
+.cal-table { table-layout: fixed; min-width: 760px; }
+.cal-table th { text-align: center; font-size: .8rem; color: #64748b; }
+.cal-cell { height: 120px; vertical-align: top; padding: .25rem !important; overflow: hidden; }
+.cal-cell.other-month { background: #f8fafc; }
+.cal-cell.is-today { outline: 2px solid var(--brand); outline-offset: -2px; }
+.cal-day { font-size: .75rem; font-weight: 600; color: #64748b; }
+.cal-events { max-height: 92px; overflow-y: auto; }
+.cal-chip { display: block; font-size: .7rem; padding: 1px 5px; border-radius: .25rem; margin-bottom: 2px;
+            white-space: nowrap; overflow: hidden; text-overflow: ellipsis; text-decoration: none; color: #fff; }
+.cal-chip.outline { background: #fff !important; color: #334155; border: 1px solid #cbd5e1; }
+.chart-box { position: relative; height: 260px; }
+
+/* Public registration page */
+.auth-card.auth-wide { max-width: 720px; }
+.auth-wrapper { padding: 1.5rem .75rem; }
